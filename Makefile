@@ -21,7 +21,7 @@ OBJECTS = $(addprefix out/, $(BASE_OBJECTS))
 all: Main
 
 run: all
-	echo "file, allocator, memory_usage" > ./results/totals.csv
+	echo "file,allocator,memory_usage" > ./results/totals.csv
 	echo "file,allocator,list,address,size,contents" > ./results/combined.csv
 	./Main first-names FIRST 4945
 	./Main first-names BEST 4945

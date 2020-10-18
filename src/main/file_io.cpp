@@ -31,7 +31,7 @@ void writeAllocMBFile(char* path, char* type, memory_list &results) {
   char base[] ="./results/";
   char ext[] =".csv";
 
-  std::ofstream file;
+  ofstream file;
   stringstream dest;
   dest << base << path << "/alloc-" << type << ext;
   file.open(dest.str());
@@ -39,7 +39,7 @@ void writeAllocMBFile(char* path, char* type, memory_list &results) {
   file << "address,size,contents"  << endl;
 
   for (auto mb : results) {
-    file << mb->address << "," << mb->size << "," << (char *) mb->address << endl;
+    file << (intptr_t) mb->address << "," << mb->size << "," << (char *) mb->address << endl;
   }
 
   file.close();
@@ -57,7 +57,7 @@ void writeFreeMBFile(char* path, char* type, memory_list &results) {
   file << "address,size"  << endl;
 
   for (auto mb : results) {
-    file << mb->address << "," << mb->size << endl;
+    file << (intptr_t) mb->address << "," << mb->size << endl;
   }
 
   file.close();
@@ -80,11 +80,11 @@ void writeCombinedFile(char* path, char* type, memory_list &freeMBList, memory_l
   file.open(dest.str(), ios_base::app);
 
   for (auto mb : allocMBList) {
-    file << path << "," << type << "," << "ALLOC" << "," <<  mb->address << "," << mb->size << "," << (char *) mb->address << endl;
+    file << path << "," << type << "," << "ALLOC" << "," <<  (intptr_t) mb->address << "," << mb->size << "," << (char *) mb->address << endl;
   }
 
   for (auto mb : freeMBList) {
-    file << path << "," << type << "," << "FREE" << "," << mb->address << "," << mb->size << "," << endl;
+    file << path << "," << type << "," << "FREE" << "," << (intptr_t) mb->address << "," << mb->size << "," << endl;
   }
 
   file.close();
