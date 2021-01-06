@@ -1,12 +1,5 @@
 # COSC1114 Assignemnt 1 2020 Semester 2
 
-|            |             |
-|------------|-------------|
-| Author     | Arone Susau |
-| Student #  | s3728977    |
-| Course     | COSC1114    |
-| Assignment | 2           |
-
 ### Please Note
 This project is intended to be run using the automatic run commands as the `Makefile` creates all required result files for the aggregation of data.
 
